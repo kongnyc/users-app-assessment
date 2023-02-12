@@ -7,7 +7,18 @@ import SearchBar from '../SearchBar/SearchBar';
 const Users = ({ users}) => {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [expanded, setExpanded] = useState([]);
 
+  const toggleExpanded = (id) => {
+    // console.log(id,expanded)
+      if (!expanded.includes(id)) {
+        // const newExpanded = [...expanded, id];
+        setExpanded([...expanded, id])
+      } else {
+        // const removeID = expanded.filter(item => item!== id);
+        setExpanded(expanded.filter(item => item!== id))
+      }
+}
   useEffect(() => {
     setFilteredUsers(
       users.filter((user) =>
@@ -19,11 +30,9 @@ const Users = ({ users}) => {
   return (
     <article className="Users">
       <SearchBar searchTerm={searchTerm}  setSearchTerm={setSearchTerm} filteredUsers={filteredUsers} setFilteredUsers={setFilteredUsers} /> 
-      <botton>Expand All</botton>
-      <botton>Collapse All</botton>
       {filteredUsers.map((user) => {
         const { id } = user;
-        return <User key={id} user={user} />;
+        return <User key={id} user={user} expanded={expanded.includes(id)} onClickExpanded={toggleExpanded}/>;
       })}
     </article>
   );
