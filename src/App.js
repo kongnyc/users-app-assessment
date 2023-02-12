@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar />
+      <h1>Our Users</h1>
       <Users users={users}/>
     </div>
   );
