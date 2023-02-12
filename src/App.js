@@ -22,30 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        {users.map((user) => (
-          <div key={user.id}>
-            <div className='user_Avatar'>
-              <img src={user.photo} alt={user.name} />
-            </div>
-            <div className='user_Info'>
-            <h2>{user.name}</h2>
-            <p>{user.country}</p>
-            <p>{user.company}</p>
-            </div>
-            <div className='user_About'>
-              <h3>Abourt {user.name}:</h3>
-              <p>{user.about}</p>
-            </div>
-            <div className='user_control'>
-              <button>Show More</button>
-            </div>
-          </div>
-        ))}
-      </div>
-
       <SearchBar />
-      <Users />
+      <Users users={users}/>
     </div>
   );
 }
