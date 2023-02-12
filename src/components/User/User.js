@@ -28,7 +28,7 @@ const User = ({ user,expanded,onClickExpanded }) => {
       <button
           onClick={()=>onClickExpanded(id)}
         >
-          {expanded ? 'Show More' : 'Show Less'}
+          {expanded ? 'Show Less' : 'Show More'}
         </button>
       </div>
     </section>

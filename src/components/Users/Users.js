@@ -30,6 +30,19 @@ const Users = ({ users}) => {
   return (
     <article className="Users">
       <SearchBar searchTerm={searchTerm}  setSearchTerm={setSearchTerm} filteredUsers={filteredUsers} setFilteredUsers={setFilteredUsers} /> 
+      <button className='StudentCard__controls' 
+        onClick={()=>{
+          if(expanded.length === 0) {
+            const allIds=users.map((user)=>user.id);
+            setExpanded(allIds);}
+            else{
+              setExpanded([]);
+          }
+        }}
+          
+      >
+      { expanded.length === 0? 'Show All' : 'Hide All'}
+      </button>
       {filteredUsers.map((user) => {
         const { id } = user;
         return <User key={id} user={user} expanded={expanded.includes(id)} onClickExpanded={toggleExpanded}/>;
